@@ -24,3 +24,5 @@ jobs:
 
       - name: Run pytest
         run: PYTHONPATH=. pytest -v
+        env:
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
