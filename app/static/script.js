@@ -19,15 +19,15 @@ function showMessage() {
   const hours = new Date().getHours();
   let greeting;
 
-  if (hours < 12) {
-    greeting = "Good morning 🌅";
-  } else if (hours < 18) {
-    greeting = "Good afternoon ☀️";
+   if (hours >= 5 && hours < 12) {
+    greeting = "🌅 Good morning";
+  } else if (hours >= 12 && hours < 18) {
+    greeting = "☀️ Good afternoon";
   } else {
-    greeting = "Good evening 🌙";
+    greeting = "🌙 Good evening";
   }
 
-  showToast(`${greeting}! 🚀 Today is a great day to grow.`, "top");
+  showToast(`${greeting}! Today is a great day to grow 🚀`, "top");
 }
 
 // ================= DARK MODE TOGGLE =================

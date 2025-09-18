@@ -1,18 +1,17 @@
-from flask import Flask, render_template, request, jsonify
-import json
-import os
+from flask import Flask, render_template, request, jsonify, Response
+import json, os
 
 app = Flask(__name__)
 
 MESSAGES_FILE = "messages.json"
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "changeme")  # set in k8s secret
 
-# Load existing messages (if file exists)
 if os.path.exists(MESSAGES_FILE):
-    with open(MESSAGES_FILE, "r") as f:
-        try:
+    try:
+        with open(MESSAGES_FILE, "r") as f:
             messages = json.load(f)
-        except json.JSONDecodeError:
-            messages = []
+    except json.JSONDecodeError:
+        messages = []
 else:
     messages = []
 
@@ -30,21 +29,19 @@ def contact():
         return jsonify({"status": "error", "message": "All fields are required!"}), 400
 
     new_message = {"name": name, "email": email, "message": message}
-
-    # Save in memory
     messages.append(new_message)
 
-    # Save to file
     with open(MESSAGES_FILE, "w") as f:
         json.dump(messages, f, indent=4)
 
-    print(f"📩 New message saved: {name} ({email}) -> {message}")
-
     return jsonify({"status": "success", "message": "✅ Thank you! Your message has been saved."})
 
-# Optional: View messages (for admin use)
+# Secure messages route
 @app.route("/messages")
 def view_messages():
+    auth = request.authorization
+    if not auth or auth.password != ADMIN_PASSWORD:
+        return Response("Unauthorized", 401, {"WWW-Authenticate": "Basic realm='Login Required'"})
     return jsonify(messages)
 
 if __name__ == "__main__":
