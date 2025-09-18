@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StackPilot</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar">
+    <img src="{{ url_for('static', filename='img/stackpilot-logo.png') }}" alt="StackPilot Logo" class="logo">
+    <ul class="nav-links">
+      <li>
+        <a href="https://github.com/your-github-username" target="_blank" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/in/your-linkedin-username" target="_blank" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+      <li>
+        <button id="theme-toggle" class="theme-btn">🌙</button>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <h1>Welcome to <span class="highlight">StackPilot</span></h1>
+    <p>🚀 A personal journey of learning and exploration</p>
+    <button onclick="showMessage()" class="cta-btn">Click Me</button>
+  </header>
+
+  <!-- ================= ABOUT ================= -->
+<section class="about">
+  <img src="{{ url_for('static', filename='img/profile.jpg') }}" alt="Profile" class="profile-pic">
+  <h2>👋 Hi, I'm Subhankar</h2>
+  <p>I’m learning Cloud and DevOps every day and enjoy exploring new ideas.</p>
+  <p>I like building useful things and growing step by step.</p>
+</section>
+
+  <!-- ================= TECH STACK ================= -->
+  <section class="tech-stack">
+    <h2>🛠 Tech Stack</h2>
+    <div class="tech-icons">
+      <i class="fab fa-python" title="Python"></i>
+      <i class="fas fa-flask" title="Flask"></i>
+      <i class="fab fa-docker" title="Docker"></i>
+      <i class="fas fa-cloud" title="Cloud"></i>
+    </div>
+  </section>
+
+
+  <!-- ================= PROJECT ================= -->
+<section class="project">
+  <div class="project-card">
+    <h3>📂 About This Project</h3>
+    <p>
+      <strong>StackPilot</strong> is my personal project to learn and explore cloud-native development. It’s a simple Flask web app that I’ve containerized with Docker and deployed on Kubernetes, with plans to integrate CI/CD, CloudFront, and other modern cloud tools. The goal is to have a hands-on playground where I can practice building, deploying, and scaling applications just like in real-world production setups.
+    </p>
+    <a href="https://github.com/imsubha27/stackpilot-app" target="_blank" class="project-link">
+      🔗 View on GitHub
+    </a>
+  </div>
+</section>
+
+
+  <!-- ================= CONTACT ================= -->
+  <section class="contact">
+    <h2>📬 Contact Me</h2>
+    <form id="contact-form">
+      <input type="text" id="name" name="name" placeholder="Your Name" required>
+      <input type="email" id="email" name="email" placeholder="Your Email" required>
+      <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <p>&copy; 2025 StackPilot</p>
+  </footer>
+
+  <!-- ================= JS ================= -->
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
