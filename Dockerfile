@@ -1,43 +1,44 @@
-# Builder stage
+# Build stage
 FROM python:3.11-slim AS builder
 
 # Install build dependencies
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    libpq-dev \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y build-essential libpq-dev && rm -rf /var/lib/apt/lists/*
 
-# Set working directory    
+# Set up working directory
 WORKDIR /app
 
-# Install dependencies into system path
+# Install Python dependencies
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
 
-# Runtime stage
+# Create a virtual environment and install dependencies
+RUN python -m venv /opt/venv && /opt/venv/bin/pip install --no-cache-dir -r requirements.txt
+
+# Final stage
 FROM python:3.11-slim
 
-# Create a non-root user
+# Create a non-root user for security
 RUN useradd --create-home appuser
 
-# Set working directory
+# Set up working directory
 WORKDIR /app
 
-# Copy only installed packages from builder
-COPY --from=builder /usr/local/lib/python3.11 /usr/local/lib/python3.11
-COPY --from=builder /usr/local/bin /usr/local/bin
+# Copy the virtual environment from the builder stage
+COPY --from=builder /opt/venv /opt/venv
 
-# Copy project files
+# Copy application code
 COPY . .
 
-# Change ownership to non-root user
+# Change ownership of the application directory
 RUN chown -R appuser:appuser /app
 
 # Switch to non-root user
 USER appuser
 
-# Expose port
+# Set environment variables
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Expose the application port
 EXPOSE 5000
 
-# Run the app
+# Command to run the application
 CMD ["gunicorn", "-b", "0.0.0.0:5000", "app.app:app"]
