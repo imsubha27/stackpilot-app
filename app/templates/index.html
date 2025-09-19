@@ -25,7 +25,7 @@
         </a>
       </li>
       <li>
-        <button id="theme-toggle" class="theme-btn">🌙</button>
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">🌙</button>
       </li>
     </ul>
   </nav>
@@ -38,12 +38,12 @@
   </header>
 
   <!-- ================= ABOUT ================= -->
-<section class="about">
-  <img src="{{ url_for('static', filename='img/profile.jpg') }}" alt="Profile" class="profile-pic">
-  <h2>👋 Hi, I'm Subhankar</h2>
-  <p>I’m learning Cloud and DevOps every day and enjoy exploring new ideas.</p>
-  <p>I like building useful things and growing step by step.</p>
-</section>
+  <section class="about">
+    <img src="{{ url_for('static', filename='img/profile.jpg') }}" alt="Profile Picture" class="profile-pic">
+    <h2>👋 Hi, I'm Subhankar</h2>
+    <p>I’m learning Cloud and DevOps every day and enjoy exploring new ideas.</p>
+    <p>I like building useful things and growing step by step.</p>
+  </section>
 
   <!-- ================= TECH STACK ================= -->
   <section class="tech-stack">
@@ -56,20 +56,22 @@
     </div>
   </section>
 
-
   <!-- ================= PROJECT ================= -->
-<section class="project">
-  <div class="project-card">
-    <h3>📂 About This Project</h3>
-    <p>
-      <strong>StackPilot</strong> is my personal project to learn and explore cloud-native development. It’s a simple Flask web app that I’ve containerized with Docker and deployed on Kubernetes, with plans to integrate CI/CD, CloudFront, and other modern cloud tools. The goal is to have a hands-on playground where I can practice building, deploying, and scaling applications just like in real-world production setups.
-    </p>
-    <a href="https://github.com/imsubha27/stackpilot-app" target="_blank" class="project-link">
-      🔗 View on GitHub
-    </a>
-  </div>
-</section>
-
+  <section class="project">
+    <div class="project-card">
+      <h3>📂 About This Project</h3>
+      <p>
+        <strong>StackPilot</strong> is my personal project to learn and explore cloud-native development. 
+        It’s a simple Flask web app that I’ve containerized with Docker and deployed on Kubernetes, 
+        with plans to integrate CI/CD, CloudFront, and other modern cloud tools. 
+        The goal is to have a hands-on playground where I can practice building, deploying, 
+        and scaling applications just like in real-world production setups.
+      </p>
+      <a href="https://github.com/imsubha27/stackpilot-app" target="_blank" class="project-link">
+        🔗 View on GitHub
+      </a>
+    </div>
+  </section>
 
   <!-- ================= CONTACT ================= -->
   <section class="contact">
