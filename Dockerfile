@@ -1,41 +1,37 @@
 # Build stage
-FROM python:3.11-slim AS builder
+FROM python:3.11-alpine AS builder
 
-# Install build dependencies
-RUN apt-get update && apt-get install -y build-essential libpq-dev && rm -rf /var/lib/apt/lists/*
+# Install build dependencies for pip packages
+RUN apk add --no-cache \
+    gcc musl-dev libpq-dev postgresql-dev
 
-# Set up working directory
+# Set working directory
 WORKDIR /app
 
 # Install Python dependencies
 COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Create a virtual environment and install dependencies
-RUN python -m venv /opt/venv && /opt/venv/bin/pip install --no-cache-dir -r requirements.txt
 
 # Final stage
-FROM python:3.11-slim
+FROM python:3.11-alpine
 
-# Create a non-root user for security
-RUN useradd --create-home appuser
+# Create a non-root user
+RUN adduser -D appuser
 
-# Set up working directory
+# Set working directory
 WORKDIR /app
 
-# Copy the virtual environment from the builder stage
-COPY --from=builder /opt/venv /opt/venv
-
-# Copy application code
+# Copy only the necessary files from the builder stage
+COPY --from=builder /usr/local/lib/python3.11 /usr/local/lib/python3.11
+COPY --from=builder /usr/local/bin /usr/local/bin
 COPY . .
 
-# Change ownership of the application directory
+# Change ownership of the application files
 RUN chown -R appuser:appuser /app
 
-# Switch to non-root user
+# Switch to the non-root user
 USER appuser
-
-# Set environment variables
-ENV PATH="/opt/venv/bin:$PATH"
 
 # Expose the application port
 EXPOSE 5000
