@@ -19,41 +19,41 @@ body {
   justify-content: space-between;
   align-items: center;
   background: #1e3a8a;
-  padding: 1rem 2rem;
+  padding: 0.8rem 1.5rem; /* reduced */
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
 .navbar .logo {
-  height: 45px;
+  height: 40px; /* slightly smaller */
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 1rem;
+  gap: 0.8rem;
   align-items: center;
 }
 
 .nav-links li a {
   color: white;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   transition: color 0.3s, transform 0.2s;
 }
 
 .nav-links li a:hover {
   color: #facc15;
-  transform: scale(1.2);
+  transform: scale(1.15);
 }
 
 .theme-btn {
   background: #facc15;
   border: none;
-  padding: 0.5rem 0.8rem;
+  padding: 0.4rem 0.7rem;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   transition: background 0.3s, transform 0.2s;
 }
 
@@ -65,13 +65,13 @@ body {
 /* ================= HERO ================= */
 .hero {
   text-align: center;
-  padding: 4rem 1rem;
+  padding: 3rem 1rem; /* reduced from 4rem */
   background: linear-gradient(to right, #2563eb, #1e3a8a);
   color: white;
 }
 
 .hero h1 {
-  font-size: 2.5rem;
+  font-size: 2.2rem; /* slightly smaller */
 }
 
 .hero .highlight {
@@ -79,51 +79,61 @@ body {
 }
 
 .cta-btn {
-  margin-top: 1.5rem;
-  padding: 0.8rem 1.5rem;
+  margin-top: 1rem;
+  padding: 0.7rem 1.2rem;
   background: #facc15;
   border: none;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 0.95rem;
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
 }
 
 .cta-btn:hover {
   background: #eab308;
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
 /* ================= ABOUT ================= */
 .about {
   text-align: center;
-  padding: 3rem 1rem;
+  padding: 2rem 1rem; /* reduced */
 }
 
 .profile-pic {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   border: 3px solid #1e3a8a;
+}
+
+.about h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.6rem;
+}
+
+.about p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
 }
 
 /* ================= TECH STACK ================= */
 .tech-stack {
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 1.8rem 1rem; /* reduced */
   background: #eef2ff;
 }
 
 .tech-stack h2 {
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 .tech-icons {
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  font-size: 2.5rem;
+  gap: 1.5rem;
+  font-size: 2.2rem;
 }
 
 .tech-icons i {
@@ -132,53 +142,92 @@ body {
 }
 
 .tech-icons i:hover {
-  transform: scale(1.2);
+  transform: scale(1.15);
   color: #2563eb;
 }
 
 /* ================= PROJECTS ================= */
 .project {
   text-align: center;
-  margin: 3rem auto;
+  margin: 1.2rem auto; /* reduced */
   max-width: 800px;
-  padding: 1rem;
+  padding: 0.8rem;
 }
 
 .project-card {
   background: var(--card-bg, #f9f9f9);
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 1.2rem; /* reduced */
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  margin-bottom: 1rem; 
 }
 
 .project-card h3 {
-  margin-bottom: 1rem;
-  font-size: 1.6rem;
+  margin-bottom: 0.6rem;
+  font-size: 1.4rem;
 }
 
 .project-card p {
-  margin-bottom: 1.5rem;
-  font-size: 1rem;
-  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .project-link {
   display: inline-block;
-  padding: 0.6rem 1.2rem;
+  padding: 0.5rem 1rem;
   background: #0077ff;
   color: white;
-  border-radius: 8px;
+  border-radius: 6px;
   text-decoration: none;
   transition: background 0.3s ease;
+  font-size: 0.9rem;
 }
 
 .project-link:hover {
   background: #005fcc;
 }
 
+/* ================= WORKFLOW ================= */
+.workflow {
+  text-align: center;
+  padding: 2rem 1rem; /* reduced */
+}
+
+.workflow h2 {
+  margin-bottom: 0.8rem;
+  font-size: 1.6rem;
+}
+
+.workflow-container {
+  display: flex;
+  justify-content: center;
+}
+
+.workflow-gif {
+  width: 100%;
+  max-width: 500px; /* smaller */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  background: transparent;
+}
+
+@media (max-width: 768px) {
+  .workflow-gif {
+    max-width: 85%;
+  }
+}
+
+@media (max-width: 480px) {
+  .workflow-gif {
+    max-width: 100%;
+  }
+}
+
 /* ================= CONTACT ================= */
 .contact {
-  padding: 3rem 1rem;
+  padding: 2rem 1rem; /* reduced */
   background: #eef2ff;
   text-align: center;
 }
@@ -188,25 +237,25 @@ body {
   flex-direction: column;
   max-width: 400px;
   margin: auto;
-  gap: 1rem;
+  gap: 0.6rem; /* reduced */
 }
 
 .contact input,
 .contact textarea {
-  padding: 0.8rem;
+  padding: 0.7rem;
   border: 1px solid #ccc;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 .contact button {
-  padding: 0.8rem;
+  padding: 0.7rem;
   background: #1e3a8a;
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.95rem;
   transition: background 0.3s;
 }
 
@@ -219,8 +268,9 @@ footer {
   text-align: center;
   background: #1e3a8a;
   color: white;
-  padding: 1rem;
-  margin-top: 2rem;
+  padding: 0.8rem;
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
 }
 
 /* ================= TOAST ================= */
@@ -230,13 +280,13 @@ footer {
   transform: translateX(-50%) translateY(-20px);
   background: #1e3a8a;
   color: white;
-  padding: 0.8rem 1.2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
   opacity: 0;
   transition: opacity 0.3s, transform 0.3s;
   z-index: 9999;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 500;
 }
 
@@ -246,11 +296,11 @@ footer {
 }
 
 .toast.top {
-  top: 20px;
+  top: 15px;
 }
 
 .toast.bottom {
-  bottom: 20px;
+  bottom: 15px;
 }
 
 /* ================= DARK MODE ================= */
@@ -311,29 +361,28 @@ body.dark .theme-btn {
   .navbar {
     flex-direction: row;       
     align-items: center;
-    padding: 1rem;
+    padding: 0.8rem;
   }
 
   .nav-links {
     flex-direction: row; 
     align-items: center;
-    gap: 1rem;
+    gap: 0.8rem;
     margin-top: 0;            
   }
-}
 
   .hero h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
   .hero p {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   .tech-icons {
     flex-wrap: wrap;
-    gap: 1rem;
-    font-size: 2rem;
+    gap: 0.8rem;
+    font-size: 1.8rem;
   }
 
   .project-card {
@@ -341,21 +390,33 @@ body.dark .theme-btn {
   }
 
   .profile-pic {
-    width: 100px;
-    height: 100px;
+    width: 85px;
+    height: 85px;
   }
+}
 
 @media (max-width: 480px) {
   .hero h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .tech-icons {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 
   .cta-btn {
     width: 100%;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* ===== Mobile spacing fix ===== */
+@media (max-width: 768px) {
+  .project {
+    margin: 0.8rem auto;  /* even smaller on mobile */
+  }
+
+  .workflow {
+    padding-top: 1rem;    /* reduce top padding */
   }
 }
