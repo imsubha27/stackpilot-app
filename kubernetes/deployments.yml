@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: stackpilot
+  labels:
+    app: stackpilot
+    app.kubernetes.io/name: stackpilot
+    app.kubernetes.io/instance: stackpilot
+    app.kubernetes.io/version: "1.0.0" 
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: stackpilot
+  template:
+    metadata:
+      labels:
+        app: stackpilot
+        app.kubernetes.io/name: stackpilot
+        app.kubernetes.io/instance: stackpilot
+        app.kubernetes.io/version: "1.0.0"
+    spec:
+      serviceAccountName: stackpilot
+      containers:
+        - name: stackpilot
+          image: imsubha27/stackpilot:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
