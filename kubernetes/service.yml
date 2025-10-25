@@ -15,6 +15,6 @@ spec:
     app.kubernetes.io/version: "1.0.0"
   ports:
     - protocol: TCP 
-      port: 80
-      targetPort: 5000
-  type: NodePort
+      port: 80   # Ingress will call this port
+      targetPort: 5000  # containerPort
+  type: clusterIP
